@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular-APic';
+  url = 'https://img.dgabc.com.br/Imagens/20161128103649.jpg?largura=945';
+  descricao = 'Foto de Leão';
 }
