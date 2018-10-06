@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PhotoService } from './photos/photo/photo.service';
 import { Photo } from './photos/photo/photo';
 
@@ -7,13 +7,15 @@ import { Photo } from './photos/photo/photo';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Angular-APic';
   photos: Photo[] = [];
 
-  constructor(photoService: PhotoService) {
+  constructor(private photoService: PhotoService) { }
 
-    photoService
+  ngOnInit() {
+
+    this.photoService
       .listFromUser('flavio')
       .subscribe(photos => this.photos = photos);
   }
