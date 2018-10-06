@@ -6,6 +6,7 @@ import { PhotoComponent } from './photo/photo.component';
   imports: [
     CommonModule
   ],
-  declarations: [PhotoComponent]
+  declarations: [PhotoComponent],
+  exports: [PhotoComponent]
 })
 export class PhotosModule { }
