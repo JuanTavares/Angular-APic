@@ -10,5 +10,15 @@ import { Photo } from '../photo/photo';
 })
 export class PhotoListComponent implements OnInit {
 
+  photos: Photo[] = [];
+
+  constructor(private photoService: PhotoService) { }
+
+  ngOnInit() {
+
+    this.photoService
+      .listFromUser('flavio')
+      .subscribe(photos => this.photos = photos);
+  }
 
 }
