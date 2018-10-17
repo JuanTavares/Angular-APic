@@ -6,6 +6,7 @@ import { DarkenOnHoverDirective } from './darken-on-hover.directive';
   imports: [
     CommonModule
   ],
-  declarations: [DarkenOnHoverDirective]
+  declarations: [DarkenOnHoverDirective],
+  exports: [DarkenOnHoverDirective]
 })
 export class DarkenOnHoverModule { }
