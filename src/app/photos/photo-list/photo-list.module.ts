@@ -5,11 +5,13 @@ import { LoadButtonComponent } from './load-button/load-button.component';
 import { FilterByDescriptionPipe } from './filter-by-description.pipe';
 import { PhotoListComponent } from './photo-list.component';
 import { PhotoModule } from '../photo/photo.module';
+import { CardModule } from 'src/app/shared/components/card/card.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    PhotoModule
+    PhotoModule,
+    CardModule
   ],
   declarations: [
     PhotosComponent,
