@@ -8,8 +8,8 @@ import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
 import { SigninComponent } from './home/signin/signin.component';
 
 const routes: Routes = [
-    {path: '', component: SigninComponent},
-    { path: 'user/:userName', component: PhotoListComponent, resolve: {photos: PhotoListResolver} },
+    { path: '', component: SigninComponent },
+    { path: 'user/:userName', component: PhotoListComponent, resolve: { photos: PhotoListResolver } },
     { path: 'p/add', component: PhotoFormComponent },
     { path: '**', component: NotFoundComponent }
 ]
