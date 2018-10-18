@@ -6,6 +6,7 @@ import { VmessageComponent } from './vmessage.component';
   imports: [
     CommonModule
   ],
-  declarations: [VmessageComponent]
+  declarations: [VmessageComponent],
+  exports: [VmessageComponent]
 })
 export class VmessageModule { }
