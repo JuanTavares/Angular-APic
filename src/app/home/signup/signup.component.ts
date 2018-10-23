@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
 
 @Component({
   selector: 'ap-signup',
@@ -10,7 +11,10 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userNotTakenValidatorService: UserNotTakenValidatorService
+    ) { }
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -33,7 +37,8 @@ export class SignupComponent implements OnInit {
           Validators.pattern(/^[a-z0-9_\-]+$/),
           Validators.minLength(2),
           Validators.maxLength(30)
-        ]
+        ],
+        [this.userNotTakenValidatorService.checkUsernameTaken()]
       ],
       password: ['',
         [
