@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
+import { NewUser } from './new-user';
+import { SignupService } from './signup.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ap-signup',
@@ -13,8 +16,10 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userNotTakenValidatorService: UserNotTakenValidatorService
-    ) { }
+    private userNotTakenValidatorService: UserNotTakenValidatorService,
+    private signupService: SignupService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -48,6 +53,15 @@ export class SignupComponent implements OnInit {
         ]
       ]
     });
+  }
+
+  signup() {
+    const newUser = this.signupForm.getRawValue() as NewUser;
+    this.signupService
+      .signup(newUser)
+      .subscribe(
+        () => this.router.navigate(['']),
+        err => console.log(err));
   }
 
 }
