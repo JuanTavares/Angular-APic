@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-signup',
+  selector: 'ap-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.formBuilder.group({
+    this.signupForm = this.formBuilder.group({
       email: ['',
         [
           Validators.required,
@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
           Validators.required,
           Validators.pattern(/^[a-z0-9_\-]+$/),
           Validators.minLength(2),
-          Validators.maxLength(40)
+          Validators.maxLength(30)
         ]
       ],
       password: ['',
