@@ -40,7 +40,7 @@
     <ap-vmessage *ngIf="signupForm.get('password').errors?.maxlength" text="Maximum length is 18">
     </ap-vmessage>
   </div>
-  <button class="btn btn-primary btn-block">Register</button>
+  <button [disabled]="signupForm" class="btn btn-primary btn-block">Register</button>
 
   <p>Already a user?
     <a [routerLink]="['']"> Sign In!</a>
