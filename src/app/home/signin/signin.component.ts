@@ -23,7 +23,8 @@ export class SigninComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
+    this.userNameInput.nativeElement.focus();
   }
   login() {
 
