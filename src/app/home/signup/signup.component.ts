@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'ap-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
+  providers: [UserNotTakenValidatorService]
 })
 export class SignupComponent implements OnInit {
 
