@@ -7,14 +7,16 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { VmessageModule } from '../shared/components/vmessage/vmessage.module';
 import { HomeComponent } from './home.component';
+import { HomeRoutingModule } from './home.routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     VmessageModule,
+    FormsModule,
     RouterModule,
-    FormsModule
+    HomeRoutingModule
   ],
   declarations: [SigninComponent, SignupComponent, HomeComponent]
 })
