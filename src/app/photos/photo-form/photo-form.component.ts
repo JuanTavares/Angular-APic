@@ -10,8 +10,9 @@ import { PhotoService } from '../photo/photo.service';
 })
 export class PhotoFormComponent implements OnInit {
 
-  photoForm: FormGroup
-  file: File
+  photoForm: FormGroup;
+  file: File;
+  preview: string;
   constructor(
     private formBuilder: FormBuilder,
     private photoService: PhotoService,
@@ -31,6 +32,13 @@ export class PhotoFormComponent implements OnInit {
     this.photoService
       .upload(description, allowComments, this.file)
       .subscribe(() => this.router.navigate(['']));
+  }
+
+  handleFile(file: File) {
+    this.file = file;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event: any) => this.preview = event.target.result;
   }
 
 }
