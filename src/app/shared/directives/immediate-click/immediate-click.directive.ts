@@ -1,10 +1,13 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[appImmediateClick]'
+  selector: '[ImmediateClick]'
 })
-export class ImmediateClickDirective {
+export class ImmediateClickDirective implements OnInit {
 
-  constructor() { }
+  constructor(private element: ElementRef<any>) { }
 
+  ngOnInit(): void {
+    this.element.nativeElement.click();
+  }
 }

@@ -6,6 +6,7 @@ import { ImmediateClickDirective } from './immediate-click.directive';
   imports: [
     CommonModule
   ],
-  declarations: [ImmediateClickDirective]
+  declarations: [ImmediateClickDirective],
+  exports: [ImmediateClickDirective]
 })
 export class ImmediateClickModule { }
