@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { PhotoComments } from '../../photo/photo-comments';
 import { PhotoService } from '../../photo/photo.service';
+import { tap, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'ap-photo-comments',
@@ -35,11 +36,12 @@ export class PhotoCommentsComponent implements OnInit {
   save() {
     const comment = this.commentForm.get('comment').value as string;
 
-    this.photoService
+    this.comments$ = this.photoService
       .addComment(this.photoId, comment)
-      .subscribe(() => {
+      .pipe(switchMap(() => this.photoService.getComments(this.photoId)))
+      .pipe(tap(() => {
         this.commentForm.reset();
-      });
+      }));
   }
 
 }
