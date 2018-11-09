@@ -3,7 +3,7 @@ import { AlertService } from './alert.service';
 import { Alert, AlertType } from './alert';
 
 @Component({
-  selector: 'app-alert',
+  selector: 'ap-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.css']
 })
@@ -26,8 +26,7 @@ export class AlertComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   removeAlert(alertToRemove: Alert) {
     this.alerts = this.alerts.filter(alert => alert != alertToRemove);
