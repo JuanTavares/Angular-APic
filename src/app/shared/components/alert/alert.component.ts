@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AlertService } from './alert.service';
-import { Alert } from './alert';
+import { Alert, AlertType } from './alert';
 
 @Component({
   selector: 'app-alert',
@@ -31,5 +31,21 @@ export class AlertComponent implements OnInit {
 
   removeAlert(alertToRemove: Alert) {
     this.alerts = this.alerts.filter(alert => alert != alertToRemove);
+  }
+
+  getAlertClass(alert: Alert) {
+    if (!alert) return '';
+
+    switch (alert.alertType) {
+
+      case AlertType.SUCCESS:
+        return 'alert alert-success';
+      case AlertType.WARNING:
+        return 'alert alert-warning';
+      case AlertType.DANGER:
+        return 'alert alert-danger';
+      case AlertType.INFO:
+        return 'alert alert-info';
+    }
   }
 }
