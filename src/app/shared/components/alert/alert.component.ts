@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AlertService } from './alert.service';
+import { Alert } from './alert';
 
 @Component({
   selector: 'app-alert',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertComponent implements OnInit {
 
-  constructor() { }
+  @Input() timeout = 3000;
+  alerts: Alert[] = [];
+
+  constructor(private alertService: AlertService) {
+
+    this.alertService
+      .getAlert()
+      .subscribe(alert => {
+        if (!alert) {
+          this.alerts = [];
+          return;
+        }
+        this.alerts.push(alert);
+        setTimeout(() => this.removeAlert(alert), this.timeout);
+      });
+  }
 
   ngOnInit() {
   }
 
+  removeAlert(alertToRemove: Alert) {
+    this.alerts = this.alerts.filter(alert => alert != alertToRemove);
+  }
 }
