@@ -1,10 +1,19 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, Renderer, OnInit } from '@angular/core';
+import { UserService } from 'src/app/core/user/user.service';
 
 @Directive({
-  selector: '[appShowIfLogged]'
+  selector: '[showIfLogged]'
 })
-export class ShowIfLoggedDirective {
+export class ShowIfLoggedDirective implements OnInit {
 
-  constructor() { }
+  constructor(
+    private element: ElementRef,
+    private renderer: Renderer,
+    private userService: UserService
+  ) { }
 
+  ngOnInit() {
+    !this.userService.isLogged()
+    && this.renderer.setElementStyle(this.element.nativeElement, 'display', 'none');
+  }
 }
