@@ -1,14 +1,15 @@
 <header class="sticky-top">
   <nav class="navbar navbar-light bg-white">
     <a class="navbar-brand">
-      <i (click)="menu.toggle()" class="fa fa-bars mr-2"></i>
+      <i showIfLogged (click)="menu.toggle()" class="fa fa-bars mr-2"></i>
       Angular-APic
     </a>
 
     <ap-menu #menu>
       <ul class="list-unstyled">
-        <li>Menu item 1</li>
-        <li>Menu item 2</li>
+        <li>
+          <a [routerLink]="[ 'p', 'add' ]">Upload</a>
+        </li>
       </ul>
     </ap-menu>
 
