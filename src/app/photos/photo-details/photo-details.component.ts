@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Photo } from '../photo/photo';
 import { PhotoService } from '../photo/photo.service';
 import { AlertService } from 'src/app/shared/components/alert/alert.service';
+import { UserService } from 'src/app/core/user/user.service';
 
 @Component({
   selector: 'ap-photo-details',
@@ -19,7 +20,8 @@ export class PhotoDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private photoService: PhotoService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -37,7 +39,7 @@ export class PhotoDetailsComponent implements OnInit {
       .subscribe(
         () => {
           this.alertService.success('Photo Removed')
-          this.router.navigate(['']);
+          this.router.navigate(['user', this.userService.getUsername()], { replaceUrl: true });
         },
         err => {
           console.log(err);
